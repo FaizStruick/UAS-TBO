@@ -3,24 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UAS-TBO</title> 
+    <title>UAS-PROJECT-TBO</title> 
     
     <link rel="stylesheet" href="styles.css">
 
-    <script src="script.js"></script>
 </head>
 <body>
-
+    
     <h1>KUIS GENERATOR OTOMATIS</h1>
+
+    <nav>
+        <ul>
+            <li><a href="#input">Input</a></li>
+            <li><a href="#isi-soal">Isi Materi</a></li>
+            <li><a href="#tampilkan-soal">Tampilkan Soal</a></li>
+            <li><a href="#hapus-soal">Hapus Soal</a></li>
+    
+        </ul>
+    </nav>
     <!-- textArea untuk input materi -->
-    <section class="card">
+    <section class="input">
         <h2>Masukkan Materi</h2>
         <textarea name="isi-Materi" id="materi-input" placeholder="Masukan materi disini..."></textarea>
         <button id="proses-btn">Proses Materi</button>
     </section>
     
-    <!-- textArea untuk menampilkan soal -->
-    <section class="card">
+    <!-- textArea untuk isi soal -->
+    <section class="isi-soal">
         <h2>Generate Soal</h2>
         <textarea name="isi-Soal" id="soal-output" placeholder="Soal akan muncul disini..." readonly></textarea>
         <button id="generate-btn">Generate Soal</button>
@@ -28,19 +37,19 @@
     </section>
 
     <!-- tombol untuk menampilkan semua soal -->
-    <section class="card">
+    <section class="tampilkan-soal">
         <h2>Tampilkan semua soal</h2>
         <button id="tampilkan-soal-btn">Tampilkan Semua Soal</button>
         <div id="tampilkan-soal"></div>
     </section>
-
-
+    
     <!-- tombol untuk menghapus semua soal -->
-    <section class="card">
+    <section class="hapus-soal">
         <button id="reset-btn" class="danger">Clear</button>
     </section>
-
-
+    
     
 </body>
+
+<script src="script.js"></script>
 </html>
