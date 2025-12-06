@@ -14,22 +14,27 @@
 
     <nav>
         <ul>
+            <li><a href="#about">About</a></li>
             <li><a href="#input">Input</a></li>
             <li><a href="#isi-soal">Isi Materi</a></li>
             <li><a href="#tampilkan-soal">Tampilkan Soal</a></li>
             <li><a href="#hapus-soal">Hapus Soal</a></li>
-    
         </ul>
     </nav>
+    <!-- section tentang aplikasi -->
+    <section class="about">
+        <h2>Tentang Aplikasi</h2>
+        <p>Aplikasi ini dirancang untuk membantu pengguna dalam membuat soal kuis secara otomatis berdasarkan materi yang dimasukkan. Dengan menggunakan teknologi pemrosesan bahasa alami, aplikasi ini dapat menghasilkan berbagai jenis soal seperti pilihan ganda, isian singkat, dan lainnya.</p>
+    </section>
     <!-- textArea untuk input materi -->
-    <section class="input">
+    <section id="input" class="input">
         <h2>Masukkan Materi</h2>
         <textarea name="isi-Materi" id="materi-input" placeholder="Masukan materi disini..."></textarea>
         <button id="proses-btn">Proses Materi</button>
     </section>
     
     <!-- textArea untuk isi soal -->
-    <section class="isi-soal">
+    <section id="isi-soal" class="isi-soal">
         <h2>Generate Soal</h2>
         <textarea name="isi-Soal" id="soal-output" placeholder="Soal akan muncul disini..." readonly></textarea>
         <button id="generate-btn">Generate Soal</button>
@@ -37,14 +42,14 @@
     </section>
 
     <!-- tombol untuk menampilkan semua soal -->
-    <section class="tampilkan-soal">
+    <section id="tampilkan-soal" class="tampilkan-soal">
         <h2>Tampilkan semua soal</h2>
         <button id="tampilkan-soal-btn">Tampilkan Semua Soal</button>
         <div id="tampilkan-soal"></div>
     </section>
     
     <!-- tombol untuk menghapus semua soal -->
-    <section class="hapus-soal">
+    <section id="hapus-soal" class="hapus-soal">
         <button id="reset-btn" class="danger">Clear</button>
     </section>
     
