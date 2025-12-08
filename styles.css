@@ -308,3 +308,126 @@ footer {
     box-shadow: 0 -4px 15px rgba(0,0,0,0.06);
 }
 
+/* ===== ADD-ON: FIGMA COMPONENTS (DITAMBAHKAN) ===== */
+
+/* ===== Logo Mini ===== */
+.logo-mini {
+    font-size: 20px;
+    font-weight: 800;
+    color: #2F3E33;
+    position: absolute;
+    top: 22px;
+    left: 32px;
+    letter-spacing: 1px;
+    user-select: none;
+}
+
+/* ===== Mini Button (About) ===== */
+.btn-mini {
+    padding: 8px 18px;
+    background: #fff;
+    border: 2px solid #9BA48C;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2F3E33;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: .25s;
+}
+
+.btn-mini:hover { background: #F5F2D8; }
+
+/* ===== Notebook Image ===== */
+.hero-image {
+    width: 330px;
+    transform: rotate(-8deg);
+    filter: drop-shadow(0 18px 30px rgba(0,0,0,0.18));
+    position: relative;
+    z-index: 2;
+}
+
+.hero-image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.circle-bg {
+    width: 380px;
+    height: 380px;
+    background: #E9E7D3;
+    border-radius: 50%;
+    position: absolute;
+    top: -25px;
+    z-index: 1;
+    filter: blur(1px);
+}
+
+/* ===== Page 2 — Drop Here Title ===== */
+.drop-title {
+    font-size: 90px;
+    font-weight: 900;
+    text-align: center;
+    color: #2F3E33;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.input-floating {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+    border-radius: 20px;
+    padding: 20px;
+    background: #FFFDF5;
+}
+
+.page2-wrap {
+    margin-top: 80px;
+    margin-bottom: 70px;
+}
+
+/* ===== Page 3 — Output Box ===== */
+.output-box {
+    padding: 22px;
+    background: #FFFDF5;
+    border-radius: 25px;
+    border: 2px solid #9BA48C;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+}
+
+.logo-corner {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    font-size: 16px;
+    font-weight: 700;
+    opacity: .7;
+}
+
+/* ===== Page 4 — About Page ===== */
+.about-title {
+    font-size: 95px;
+    font-weight: 900;
+    color: #2F3E33;
+    line-height: 1;
+    margin-bottom: 25px;
+}
+
+.about-text {
+    font-size: 18px;
+    color: #3F5248;
+    line-height: 1.9;
+    margin-bottom: 18px;
+}
+
+.about-image {
+    width: 360px;
+    transform: rotate(-6deg);
+    position: absolute;
+    right: 40px;
+    top: 120px;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.18));
+}
