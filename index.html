@@ -17,7 +17,7 @@
     <span>Praktis • Cepat • Akurat</span>
     </header>
 
-    <nav>
+    <nav role="navigation" aria-label="Main Navigation">
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#input">Input</a></li>
@@ -27,8 +27,9 @@
         </ul>
     </nav>
 
+    <main>
     <!-- section tentang aplikasi -->
-    <section id="about" class="about">
+    <section id="about" class="active">
         <h2>Tentang Aplikasi</h2>
         <p>Aplikasi ini dirancang untuk membantu pengguna dalam membuat soal kuis secara otomatis berdasarkan materi yang dimasukkan. Dengan menggunakan teknologi pemrosesan bahasa alami, aplikasi ini dapat menghasilkan berbagai jenis soal seperti pilihan ganda, isian singkat, dan lainnya.</p>
     </section>
@@ -37,7 +38,7 @@
     <section id="input" class="input">
         <h2>Masukkan Materi</h2>
         <textarea name="isi-Materi" id="materi-input" required placeholder="Masukan materi disini..."></textarea>
-        <button id="proses-btn" type="button">Proses Materi</button>
+        <button id="proses-btn" class="primary">Proses Materi</button>
     </section>
     
     <!-- textArea untuk isi soal -->
@@ -53,14 +54,16 @@
     <section id="tampilkan-soal" class="tampilkan-soal">
         <h2>Tampilkan semua soal</h2>
         <button id="tampilkan-soal-btn">Tampilkan Semua Soal</button>
-        <div id="tampilkan-soal"></div>
+        <div id="soal-list"></div>
     </section>
     
     <!-- tombol untuk menghapus semua soal -->
-    <section id="hapus-soal" class="hapus-soal">
+    <section id="hapus-soal">
         <h2>Hapus Semua Soal</h2>
         <button id="reset-btn" class="danger">Clear</button>
     </section>
+
+    </main>
 
     <button id="back-to-top" class="secondary" style="display:none;">↑</button>
 

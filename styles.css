@@ -96,7 +96,8 @@ nav {
     border-radius: 15px;
     margin-bottom: 20px;
     position: sticky;
-    top: 10px;
+    top: 0px;
+    margin-top: 10px;
     z-index: 10;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     animation: fadeDown 0.8s ease;
@@ -104,6 +105,7 @@ nav {
 
 nav ul {
     display: flex;
+    flex-wrap: wrap;
     gap: 25px;
     list-style: none;
     justify-content: center;
@@ -131,12 +133,15 @@ section {
     display: none;
     margin: 18px 0;
     border-radius: 14px;
-    transition: 0.3s ease;
+    transition: opacity 0.4s ease;
     box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    scroll-margin-top: 130px;
+    opacity: 0;
 }
 section.active {
     display: block;
     animation: floatUp 0.8s ease;
+    opacity: 1;
 }
 
 section:hover {
