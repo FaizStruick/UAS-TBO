@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplikasi generate soal otomatis menggunakan RAKE dan CFG. Dikembangkan untuk UAS TBO.">
     <title>UAS-PROJECT-TBO</title> 
     
     <link rel="stylesheet" href="styles.css">
@@ -10,7 +11,11 @@
 </head>
 <body>
     
+    <header class="hero">
     <h1>KUIS GENERATOR OTOMATIS</h1>
+    <p>Masukkan materi ➜ sistem menghasilkan soal otomatis dengan RAKE + CFG</p>
+    <span>Praktis • Cepat • Akurat</span>
+    </header>
 
     <nav>
         <ul>
@@ -21,16 +26,18 @@
             <li><a href="#hapus-soal">Hapus Soal</a></li>
         </ul>
     </nav>
+
     <!-- section tentang aplikasi -->
-    <section class="about">
+    <section id="about" class="about">
         <h2>Tentang Aplikasi</h2>
         <p>Aplikasi ini dirancang untuk membantu pengguna dalam membuat soal kuis secara otomatis berdasarkan materi yang dimasukkan. Dengan menggunakan teknologi pemrosesan bahasa alami, aplikasi ini dapat menghasilkan berbagai jenis soal seperti pilihan ganda, isian singkat, dan lainnya.</p>
     </section>
+    
     <!-- textArea untuk input materi -->
     <section id="input" class="input">
         <h2>Masukkan Materi</h2>
-        <textarea name="isi-Materi" id="materi-input" placeholder="Masukan materi disini..."></textarea>
-        <button id="proses-btn">Proses Materi</button>
+        <textarea name="isi-Materi" id="materi-input" required placeholder="Masukan materi disini..."></textarea>
+        <button id="proses-btn" type="button">Proses Materi</button>
     </section>
     
     <!-- textArea untuk isi soal -->
@@ -38,7 +45,8 @@
         <h2>Generate Soal</h2>
         <textarea name="isi-Soal" id="soal-output" placeholder="Soal akan muncul disini..." readonly></textarea>
         <button id="generate-btn">Generate Soal</button>
-        <div id="loading-indicator" style="display: none;">Memproses...</div>
+        
+        <div id="loading-indicator" class="loading" style="display: none;">Memproses...</div>
     </section>
 
     <!-- tombol untuk menampilkan semua soal -->
@@ -50,11 +58,17 @@
     
     <!-- tombol untuk menghapus semua soal -->
     <section id="hapus-soal" class="hapus-soal">
+        <h2>Hapus Semua Soal</h2>
         <button id="reset-btn" class="danger">Clear</button>
     </section>
-    
-    
-</body>
 
-<script src="script.js"></script>
+    <button id="back-to-top" class="secondary" style="display:none;">↑</button>
+
+    <footer>
+        <p>© 2025 Quiz Generator - Kelompok 2 TBO</p>
+    </footer>
+    
+    
+    <script src="script.js"></script>
+</body>
 </html>
