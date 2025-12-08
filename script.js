@@ -18,3 +18,6 @@ menuLinks.forEach(link => {
 
 // Default tampil menu ABOUT saat pertama buka
 document.getElementById("about").classList.add("active");
+
+
+

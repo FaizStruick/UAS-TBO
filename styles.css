@@ -135,7 +135,7 @@ section {
     border-radius: 14px;
     transition: opacity 0.4s ease;
     box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-    scroll-margin-top: 130px;
+    scroll-margin-top: 120px;
     opacity: 0;
 }
 section.active {
@@ -223,25 +223,63 @@ button:active::after {
 }
 
 .danger {
-    background-color: #C95A4C;
+    background-color: #9BA48C;
     color: white;
     width: 100%;
 }
 
 .danger:hover {
-    background-color: #9B4238;
+    background-color: #9BA48C;
+    opacity: 0.85s;
 }
 
-/* ===== OUTPUT LIST ===== */
+
+/* ===== BUTTON GROUP (Tampilkan & Hapus Soal) ===== */
+.btn-group {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.btn-group button {
+    flex: 1; /* bikin tombol ukuran seimbang */
+}
+
 #tampilkan-soal {
-    padding: 10px;
-    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#reset-btn {
+    margin-top: 15px;
+    align-self: flex-end;
+}
+
+/* Responsive — kalau layar kecil tombol jadi vertikal */
+@media (max-width: 600px) {
+    .btn-group {
+        flex-direction: column;
+    }
+
+    .btn-group button {
+        width: 100%;
+    }
+}
+
+.soal-list {
+    margin-top: 15px;
+    background: #FFFDF5;
+    border: 1.5px solid #C5C8B0;
+    padding: 15px;
+    border-radius: 12px;
     font-size: 15px;
     line-height: 1.6;
-    background: #FFFDF5;
-    border-radius: 10px;
-    border: 1px solid #C5C8B0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    min-height: 80px;
 }
+
+
 
 .loading {
     margin-top: 10px;

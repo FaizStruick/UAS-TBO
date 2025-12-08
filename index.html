@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Aplikasi generate soal otomatis menggunakan RAKE dan CFG. Dikembangkan untuk UAS TBO.">
-    <title>UAS-PROJECT-TBO</title> 
-    
+    <title>askIFY - UAS-PROJECT-TBO</title> 
     <link rel="stylesheet" href="styles.css">
-
 </head>
+
 <body>
     
     <header class="hero">
@@ -21,15 +20,14 @@
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#input">Input</a></li>
-            <li><a href="#isi-soal">Isi Materi</a></li>
+            <li><a href="#generate">Isi Materi</a></li>
             <li><a href="#tampilkan-soal">Tampilkan Soal</a></li>
-            <li><a href="#hapus-soal">Hapus Soal</a></li>
         </ul>
     </nav>
 
     <main>
     <!-- section tentang aplikasi -->
-    <section id="about" class="active">
+    <section id="about" class="about active">
         <h2>Tentang Aplikasi</h2>
         <p>Aplikasi ini dirancang untuk membantu pengguna dalam membuat soal kuis secara otomatis berdasarkan materi yang dimasukkan. Dengan menggunakan teknologi pemrosesan bahasa alami, aplikasi ini dapat menghasilkan berbagai jenis soal seperti pilihan ganda, isian singkat, dan lainnya.</p>
     </section>
@@ -42,30 +40,30 @@
     </section>
     
     <!-- textArea untuk isi soal -->
-    <section id="isi-soal" class="isi-soal">
-        <h2>Generate Soal</h2>
+    <section id="generate" class="isi-soal">
+        <h2>askIFY</h2>
         <textarea name="isi-Soal" id="soal-output" placeholder="Soal akan muncul disini..." readonly></textarea>
-        <button id="generate-btn">Generate Soal</button>
+        <button id="generate-btn" class="primary">Generate Soal</button>
         
         <div id="loading-indicator" class="loading" style="display: none;">Memproses...</div>
     </section>
 
-    <!-- tombol untuk menampilkan semua soal -->
+    <!-- tombol untuk menampilkan semua soal dan hapus soal -->
     <section id="tampilkan-soal" class="tampilkan-soal">
         <h2>Tampilkan semua soal</h2>
+
+        <div class="btn-group">
         <button id="tampilkan-soal-btn">Tampilkan Semua Soal</button>
-        <div id="soal-list"></div>
+        <button id="reset-btn" class="danger">Clear</button>
+        </div>
+        
+        <div id="soal-list" class="soal-list"></div>
     </section>
     
-    <!-- tombol untuk menghapus semua soal -->
-    <section id="hapus-soal">
-        <h2>Hapus Semua Soal</h2>
-        <button id="reset-btn" class="danger">Clear</button>
-    </section>
 
     </main>
 
-    <button id="back-to-top" class="secondary" style="display:none;">↑</button>
+    <button id="back-to-top" aria-label="Back to Top" class="secondary" style="display:none;">↑</button>
 
     <footer>
         <p>© 2025 Quiz Generator - Kelompok 2 TBO</p>
