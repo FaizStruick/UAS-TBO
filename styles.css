@@ -183,6 +183,10 @@ nav a:hover, nav a.active {
 
 /* ===== CONTENT WRAPPER ===== */
 section {
+    width: 100%;
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto;
     background: #FDFBF0;
     border: 2px solid #9BA48C;
     padding: 25px;
@@ -222,6 +226,16 @@ textarea {
     background-color: #FFFDF5;
     resize: none;
     transition: 0.2s;
+}
+
+@media (min-width: 768px) {
+    /* Menambah tinggi textarea di desktop */
+    #materi-input {
+        height: 250px;
+    }
+    #soal-output {
+        height: 350px; /* Output soal harus lebih tinggi */
+    }
 }
 
 textarea:focus {
@@ -534,4 +548,22 @@ footer {
     right: 40px;
     top: 120px;
     filter: drop-shadow(0 20px 40px rgba(0,0,0,0.18));
+}
+
+@media (min-width: 1024px) {
+    /* Meningkatkan ukuran font di layar yang lebih lebar */
+    .hero h1 {
+        font-size: 64px; /* Naik dari 52px */
+    }
+    .hero p {
+        font-size: 20px; /* Naik dari 18px */
+    }
+    h2 {
+        font-size: 26px; /* Naik dari 22px */
+    }
+    
+    /* Meningkatkan lebar maksimal section jika perlu */
+    section {
+        max-width: 1050px; 
+    }
 }
