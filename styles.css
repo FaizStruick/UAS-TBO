@@ -1,537 +1,382 @@
-/* ===== FONT ===== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
-
-/* ===== GLOBAL ===== */
+/* ================= RESET ================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+/* ================= VARIABLES ================= */
 :root {
-    --color-primary: #8A9C78; /* Hijau Utama */
-    --color-secondary: #E5E1C2; /* Krem Aksen */
-    --color-background: #F5F2D8; /* Krem Latar */
-    --color-dark: #2F3E33; /* Teks/Latar Gelap */
-    --font-main: "Poppins", sans-serif;
+    --green: #6f8564;
+    --cream: #fbf8e8;
+    --white: #ffffff;
 }
 
+/* ================= BODY ================= */
 body {
-    font-family: var(--font-main);
-    background-color: var(--color-dark); /* soft cream */
-    color: var(--color-dark);
-    padding: 20px 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.primary{
-    background-color: var(--color-primary);
-    color: white;
-}
-
-/* ===== HERO HEADER ===== */
-.hero {
-    width: 100%;
-    max-width: 1100px;
-    background: #46594C;
-    display: flex;
-    justify-content: space-between;
-    padding: 80px 35px;
-    border-radius: 20px;
-    text-align: left;
+    background: var(--green);
+    height: 100vh;
     overflow: hidden;
-}
-.hero .hero-content {
-    max-width: 45%;
-    text-align: left;
-    margin-right: 20px;
-    z-index: 3;
+    font-family: 'Inter', sans-serif;
 }
 
-/* HERO Title */
-.hero h1 {
-    font-size: 52px;
-    font-weight: 800;
-    color: #FDFBF0;
-    margin-bottom: 12px;
-    letter-spacing: 1px;
-    text-align: left;
-}
-
-/* Subtitle */
-.hero p {
-    font-size: 18px;
-    font-weight: 400;
-    color: #FDFBF0;
-    margin-bottom: 10px;
-    text-align: left;
-}
-
-/* Small tagline */
-.hero span {
-    font-size: 14px;
-    color: #E5E1C2;
-    font-style: italic;
-}
-
-
-/* ===== TITLE ===== */
-h1 {
-    font-size: 38px;
-    font-weight: 800;
-    text-align: center;
-    margin-bottom: 25px;
-    letter-spacing: 1px;
-    animation: fadeDown 0.8s ease;
-}
-/* ===== ANIMATIONS ===== */
-@keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes floatUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== Styling Gambar Buku (Sudah ada di kode Anda, ini untuk memastikan) ===== */
-.hero-image-container {
+/* ================= HOME ================= */
+.home {
     position: relative;
-    display: flex;
-    justify-content: center;
-    /* Geser ke kanan untuk tampilan yang lebih baik jika perlu */
-    transform: translateX(-7px); 
-    flex-shrink: 0;
+    height: 100vh;
+    padding: 40px 60px;
+    color: var(--white);
 }
 
-.hero-image-container .hero-image {
-    transform: translate(-10px, -10px) rotate(-9deg) scale(1.03); 
-    filter: drop-shadow(0 25px 45px rgba(0,0,0,0.25));
-}
-
-.hero-image {
-    width: 330px;
-    transform: rotate(-8deg);
-    filter: drop-shadow(0 18px 30px rgba(0,0,0,0.18));
-    position: relative;
-    z-index: 2; /* Di atas lingkaran */
-}
-
-.hero-image, .circle-bg {
-    transition: transform 0.5s ease-out, filter 0.5s ease-out;
-}
-
-.hero-image-container:hover .hero-image {
-    transform: translate(-10px, -10px) rotate(-9deg) scale(1.06); 
-    filter: drop-shadow(0 25px 45px rgba(0,0,0,0.25));
-}
-
-.circle-bg {
-    width: 380px;
-    height: 380px;
-    background: #E9E7D3;
-    border-radius: 50%;
+/* ================= LOGO ================= */
+.logo {
     position: absolute;
-    top: -25px;
-    z-index: 1; /* Di bawah gambar buku */
-    filter: blur(1px);
+    top: 28px;
+    left: 50px;
+    width: 48px;
+    /* atur jika perlu */
+    height: auto;
 }
 
-/* ===== NAVBAR ===== */
-nav {
-    width: 100%;
-    max-width: 950px;
-    background-color: #FDFBF0;
-    border: 2px solid #9BA48C;
-    padding: 12px 25px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    position: sticky;
-    top: 0px;
-    margin-top: 10px;
-    z-index: 10;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    animation: fadeDown 0.8s ease;
-}
-
-nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
-    list-style: none;
-    justify-content: center;
-}
-
-nav a {
-    text-decoration: none;
-    color: #2F3E33;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 12px;
-    transition: 0.2s;
-}
-
-nav a:hover, nav a.active {
-    background-color: #E5E1C2;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-}
-
-/* ===== CONTENT WRAPPER ===== */
-section {
-    background: #FDFBF0;
-    border: 2px solid #9BA48C;
-    padding: 25px;
-    display: none;
-    margin: 18px 0;
-    border-radius: 14px;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-    scroll-margin-top: 120px;
-    opacity: 0;
-}
-section.active {
-    display: block;
-    animation: floatUp 0.8s ease;
-    opacity: 1;
-}
-
-section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 18px 35px rgba(0,0,0,0.15);
-}
-
-section h2 {
-    font-size: 22px;
-    margin-bottom: 12px;
-    font-weight: 700;
-}
-
-/* ===== TEXTAREA ===== */
-textarea {
-    width: 100%;
-    height: 160px;
-    border-radius: 12px;
-    border: 1.5px solid #A3AE98;
-    padding: 12px;
-    margin-bottom: 12px;
-    background-color: #FFFDF5;
-    resize: none;
-    transition: 0.2s;
-}
-
-textarea:focus {
-    outline: none;
-    border-color: #8A9C78;
-    box-shadow: 0 0 8px rgba(138,156,120,0.4);
-}
-
-.primary[disabled] {
-    opacity: 0.6; /* Membuat tombol terlihat redup */
-    cursor: not-allowed; /* Mengubah kursor */
-    background-color: #A3AE98; /* Warna yang berbeda saat dinonaktifkan */
-}
-
-.primary[disabled]:hover {
-    background-color: #A3AE98; /* Menghilangkan efek hover saat dinonaktifkan */
-}
-
-/* ===== BUTTON ===== */
-button {
-    font-size: 15px;
-    padding: 12px 20px;
-    border-radius: 25px;
+/* ================= ABOUT BUTTON ================= */
+.about-btn {
+    position: absolute;
+    top: 76px;
+    /* tepat di bawah logo */
+    left: 150px;
+    background: var(--cream);
     border: none;
-    cursor: pointer;
-    transition: .25s ease;
-    position: relative;
-    overflow: hidden;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-button svg {
-    width: 1em; 
-    height: 1em;
-    fill: currentColor; /* Mengikuti warna teks tombol */
-}
-/* Ripple Effect */
-button::after {
-    content: "";
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    background: rgba(255,255,255,0.5);
-    display: block;
-    border-radius: 50%;
-    opacity: 0;
-    transform: scale(1);
-    pointer-events: none;
-}
-
-button:active::after {
-    opacity: 1;
-    transform: scale(40);
-    transition: transform 0.6s, opacity 0.8s;
-}
-
-.primary {
-    background-color: #8A9C78;
-    color: white;
-}
-
-.primary:hover {
-    background-color: #6D8162;
-}
-
-.secondary {
-    background-color: #E9E7D3;
-}
-
-.secondary:hover {
-    background-color: #D2CFBA;
-}
-
-.danger {
-    background-color: #9BA48C;
-    color: white;
-    width: 100%;
-}
-
-.danger:hover {
-    background-color: var(--color-dark);
-    opacity: 1;
-}
-
-
-/* ===== BUTTON GROUP (Tampilkan & Hapus Soal) ===== */
-.btn-group {
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.btn-group button {
-    padding: 12px 20px;
+    padding: 6px 18px;
     border-radius: 20px;
-    flex: 1; /* bikin tombol ukuran seimbang */
-}
-
-#tampilkan-soal {
-    display: flex;
-    flex-direction: column;
-}
-
-#reset-btn {
-    margin-top: 15px;
-    align-self: flex-end;
-}
-
-/* Responsive — kalau layar kecil tombol jadi vertikal */
-@media (max-width: 600px) {
-    .btn-group {
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .btn-group button {
-        width: 100%;
-    }
-}
-
-.soal-list {
-    margin-top: 15px;
-    background: #FFFDF5;
-    border: 1.5px solid #C5C8B0;
-    padding: 15px;
-    border-radius: 12px;
-    font-size: 15px;
-    line-height: 1.6;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    min-height: 80px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-
-.loading {
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-#back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 12px 16px;
-    border-radius: 50%;
-}
-
-/* ===== FOOTER ===== */
-footer {
-    margin-top: 40px;
-    padding: 18px 25px;
-    text-align: center;
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    background: #FDFBF0;
-    border-top: 2px solid #9BA48C;
-    color: #3F5248;
-    font-size: 14px;
-    border-radius: 12px 12px 0 0;
-    box-shadow: 0 -4px 15px rgba(0,0,0,0.06);
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 950px;
-    gap: 15px;
-}
-.footer-tag {
     font-size: 13px;
-    opacity: 0.8;
+    font-weight: 500;
+    cursor: pointer;
 }
 
-/* Responsif: Tumpuk konten di layar kecil */
-@media (max-width: 600px) {
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
+.about-btn {
+    text-decoration: none;
+    color: #000;
 }
 
-/* ===== ADD-ON: FIGMA COMPONENTS (DITAMBAHKAN) ===== */
-
-/* ===== Logo Mini ===== */
-.logo-mini {
-    font-size: 20px;
-    font-weight: 800;
-    color: #2F3E33;
+/* ================= TEXT BLOCK ================= */
+.text {
     position: absolute;
-    top: 22px;
-    left: 32px;
-    letter-spacing: 1px;
-    user-select: none;
+    top: 140px;
+    left: 140px;
 }
 
-/* ===== Mini Button (About) ===== */
-.btn-mini {
-    padding: 8px 18px;
-    background: #fff;
-    border: 2px solid #9BA48C;
-    border-radius: 30px;
+/* TITLE */
+.text h1 {
+    font-size: 190px;
+    font-weight: 900;
+    line-height: 0.82;
+    letter-spacing: -6px;
+}
+
+/* DESCRIPTION */
+.text p {
+    margin-top: 26px;
+    margin-left: 8px;
     font-size: 14px;
-    font-weight: 600;
-    color: #2F3E33;
+    line-height: 1.5;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    opacity: 0.95;
+}
+
+/* GENERATE BUTTON */
+.generate-btn {
+    margin-top: 30px;
+    margin-left: 8px;
+    background: var(--cream);
+    border-radius: 22px;
+    padding: 10px 22px;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+    text-decoration: none;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    transition: .25s;
 }
 
-.btn-mini:hover { background: #F5F2D8; }
+/* text */
+.generate-btn span {
+    font-size: 13px;
+    font-weight: 500;
+    color: #000;
+}
 
-/* ===== Notebook Image ===== */
-.hero-image {
-    width: 330px;
-    transform: rotate(-8deg);
-    filter: drop-shadow(0 18px 30px rgba(0,0,0,0.18));
-    position: relative;
+/* icon */
+.icon-search {
+    width: 16px;
+    height: 16px;
+}
+
+/* ================= VISUAL ================= */
+.visual {
+    position: absolute;
+    top: 5px;
+    right: -100px;
+    /* keluar layar kanan */
+    width: 700px;
+    height: 700px;
+}
+
+/* BACKGROUND CIRCLE */
+.visual .circle {
+    position: absolute;
+    width: 680px;
+    height: 680px;
+    background: var(--cream);
+    border-radius: 50%;
+    right: 0;
+    top: 10px;
+}
+
+/* BOOK IMAGE */
+.book {
+    position: absolute;
+    width: 650px;
+    right: 80px;
+    top: 110px;
     z-index: 2;
 }
 
-.hero-image-container {
+/* ================= DROP PAGE ================= */
+body.drop-page {
+    background: var(--cream);
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+/* CONTAINER */
+.drop {
     position: relative;
-    display: flex;
-    justify-content: center;
+    height: 100vh;
+    padding: 60px 80px;
 }
 
-.circle-bg {
-    width: 380px;
-    height: 380px;
-    background: #E9E7D3;
-    border-radius: 50%;
+/* BRAND (LEFT) */
+.brand {
     position: absolute;
-    top: -25px;
-    z-index: 1;
-    filter: blur(1px);
-}
-
-/* ===== Page 2 — Drop Here Title ===== */
-.drop-title {
-    font-size: 90px;
-    font-weight: 900;
-    text-align: center;
-    color: #2F3E33;
-    margin-bottom: 25px;
-    letter-spacing: 2px;
-}
-
-.input-floating {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.12);
-    border-radius: 20px;
-    padding: 20px;
-    background: #FFFDF5;
-}
-
-.page2-wrap {
-    margin-top: 80px;
-    margin-bottom: 70px;
-}
-
-/* ===== Page 3 — Output Box ===== */
-.output-box {
-    padding: 22px;
-    background: #FFFDF5;
-    border-radius: 25px;
-    border: 2px solid #9BA48C;
-    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
-}
-
-.logo-corner {
-    position: fixed;
-    bottom: 22px;
-    right: 22px;
-    font-size: 16px;
+    top: 60px;
+    left: 80px;
+    font-size: 22px;
     font-weight: 700;
-    opacity: .7;
+    line-height: 0.9;
+    color: #000;
 }
 
-/* ===== Page 4 — About Page ===== */
-.about-title {
-    font-size: 95px;
+.brand {
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+}
+
+/* CENTER GROUP */
+.drop-center {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* TITLE */
+.drop-title {
+    font-size: 120px;
     font-weight: 900;
-    color: #2F3E33;
-    line-height: 1;
-    margin-bottom: 25px;
+    line-height: 0.9;
+    letter-spacing: -3px;
+    color: #000;
 }
 
-.about-text {
-    font-size: 18px;
-    color: #3F5248;
-    line-height: 1.9;
+/* FORM WRAP */
+.drop-form {
+    margin-top: 40px;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* INPUT */
+.drop-input {
+    width: 100%;
+    height: 48px;
+    background: var(--green);
+    border: none;
+    border-radius: 16px;
+    padding: 0 20px;
+    font-size: 14px;
+    color: #fff;
+    outline: none;
+}
+
+.drop-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* BUTTON WRAPPER (RIGHT) */
+.drop-btn-wrap {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    /* 👉 ke kanan */
+}
+
+/* BUTTON */
+.drop-btn {
+    background: var(--green);
+    border: none;
+    padding: 10px 28px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* ================= RESULT PAGE ================= */
+body.result-page {
+    background: var(--green);
+    height: 100vh;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
+
+/* PAGE WRAP */
+.result {
+    height: 100vh;
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* BIG OUTPUT BOX */
+.result-box {
+    flex: 1;
+    background: var(--cream);
+    border-radius: 18px;
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.25);
+}
+
+/* FOOTER */
+.result-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+    background: var(--cream);
+    border: none;
+    padding: 8px 22px;
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* BRAND RIGHT */
+.result-brand {
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 0.9;
+    color: #fff;
+    text-align: right;
+}
+
+.result-brand {
+    text-decoration: none;
+    color: #fff;
+    /* atau hitam, sesuaikan bg */
+    font-weight: 900;
+    line-height: 0.9;
+    cursor: pointer;
+}
+
+/* ================= ABOUT PAGE ================= */
+.about-page {
+    background: var(--green);
+    height: 100vh;
+    padding: 60px 100px;
+    position: relative;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* BRAND */
+.about-brand {
+    position: absolute;
+    top: 40px;
+    left: 80px;
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 0.9;
+}
+
+.about-brand {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 900;
+    line-height: 0.9;
+    cursor: pointer;
+}
+
+/* CONTENT */
+.about-content {
+    max-width: 720px;
+    margin-left: 260px;
+    margin-top: 10px;
+    /* naik ke atas */
+}
+
+.about-content h1 {
+    font-size: 84px;
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+.about-content p {
+    font-size: 14px;
+    line-height: 1.7;
+    opacity: 0.95;
     margin-bottom: 18px;
 }
 
-.about-image {
-    width: 360px;
-    transform: rotate(-6deg);
+.about-content .lead {
+    opacity: 0.85;
+}
+
+.about-content blockquote {
+    margin: 22px 0;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.95;
+}
+
+.about-content .tagline {
+    margin-top: 26px;
+    margin-bottom: 18px;
+}
+
+.about-content .closing {
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+/* IMAGE */
+.about-visual {
     position: absolute;
-    right: 40px;
-    top: 120px;
-    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.18));
+    bottom: 30px;
+    left: 40px;
+}
+
+.about-visual img {
+    width: 240px;
+    transform: rotate(-3deg);
 }
