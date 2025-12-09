@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
+    <div id="notification-bar" style="display: none;"></div>
 <body>
     
     <header class="hero">
@@ -42,14 +43,18 @@
     <section id="input" class="input">
         <h2>Masukkan Materi</h2>
         <textarea name="isi-Materi" id="materi-input" required placeholder="Masukan materi disini..."></textarea>
-        <button id="proses-btn" class="primary">Proses Materi</button>
+        <button id="generate-btn" class="primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.397l3.743 3.743a1 1 0 0 0 1.414-1.414l-3.743-3.743zM10.5 6.5a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"/>
+        </svg>
+        Proses & Generate Soal
+        </button>
     </section>
     
     <!-- textArea untuk isi soal -->
     <section id="generate" class="isi-soal">
-        <h2>askIFY</h2>
+        <h2>Hasil Generate Soal</h2>
         <textarea name="isi-Soal" id="soal-output" placeholder="Soal akan muncul disini..." readonly></textarea>
-        <button id="generate-btn" class="primary">Generate Soal</button>
         
         <div id="loading-indicator" class="loading" style="display: none;">Memproses...</div>
     </section>
@@ -58,11 +63,8 @@
     <section id="tampilkan-soal" class="tampilkan-soal">
         <h2>Tampilkan semua soal</h2>
 
-        <span class="logo-coroner">askIFy</span>
-
         <div id="soal-list" class="soal-list"></div>
 
-    
         <div class="btn-group">
         <button id="tampilkan-soal-btn" class="secondary">Tampilkan Semua Soal</button>
         <button id="reset-btn" class="danger">Clear</button>

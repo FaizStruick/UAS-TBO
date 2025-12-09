@@ -205,6 +205,7 @@ textarea:focus {
     box-shadow: 0 0 8px rgba(138,156,120,0.4);
 }
 
+
 /* ===== BUTTON ===== */
 button {
     font-size: 15px;
@@ -215,6 +216,15 @@ button {
     transition: .25s ease;
     position: relative;
     overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+button svg {
+    width: 1em; 
+    height: 1em;
+    fill: currentColor; /* Mengikuti warna teks tombol */
 }
 /* Ripple Effect */
 button::after {
