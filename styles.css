@@ -11,15 +11,26 @@
 html {
     scroll-behavior: smooth;
 }
+:root {
+    --color-primary: #8A9C78; /* Hijau Utama */
+    --color-secondary: #E5E1C2; /* Krem Aksen */
+    --color-background: #F5F2D8; /* Krem Latar */
+    --color-dark: #2F3E33; /* Teks/Latar Gelap */
+    --font-main: "Poppins", sans-serif;
+}
 
 body {
-    font-family: "Poppins", sans-serif;
-    background-color: #667F62; /* soft cream */
-    color: #2F3E33;
+    font-family: var(--font-main);
+    background-color: var(--color-dark); /* soft cream */
+    color: var(--color-dark);
     padding: 20px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.primary{
+    background-color: var(--color-primary);
+    color: white;
 }
 
 /* ===== HERO HEADER ===== */
@@ -98,12 +109,26 @@ h1 {
     flex-shrink: 0;
 }
 
+.hero-image-container .hero-image {
+    transform: translate(-10px, -10px) rotate(-9deg) scale(1.03); 
+    filter: drop-shadow(0 25px 45px rgba(0,0,0,0.25));
+}
+
 .hero-image {
     width: 330px;
     transform: rotate(-8deg);
     filter: drop-shadow(0 18px 30px rgba(0,0,0,0.18));
     position: relative;
     z-index: 2; /* Di atas lingkaran */
+}
+
+.hero-image, .circle-bg {
+    transition: transform 0.5s ease-out, filter 0.5s ease-out;
+}
+
+.hero-image-container:hover .hero-image {
+    transform: translate(-10px, -10px) rotate(-9deg) scale(1.06); 
+    filter: drop-shadow(0 25px 45px rgba(0,0,0,0.25));
 }
 
 .circle-bg {
@@ -164,7 +189,7 @@ section {
     display: none;
     margin: 18px 0;
     border-radius: 14px;
-    transition: opacity 0.4s ease;
+    transition: all 0.3s ease;
     box-shadow: 0 10px 25px rgba(0,0,0,0.06);
     scroll-margin-top: 120px;
     opacity: 0;
@@ -176,8 +201,8 @@ section.active {
 }
 
 section:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.15);
 }
 
 section h2 {
@@ -205,6 +230,15 @@ textarea:focus {
     box-shadow: 0 0 8px rgba(138,156,120,0.4);
 }
 
+.primary[disabled] {
+    opacity: 0.6; /* Membuat tombol terlihat redup */
+    cursor: not-allowed; /* Mengubah kursor */
+    background-color: #A3AE98; /* Warna yang berbeda saat dinonaktifkan */
+}
+
+.primary[disabled]:hover {
+    background-color: #A3AE98; /* Menghilangkan efek hover saat dinonaktifkan */
+}
 
 /* ===== BUTTON ===== */
 button {
@@ -270,7 +304,7 @@ button:active::after {
 }
 
 .danger:hover {
-    background-color: #9BA48C;
+    background-color: var(--color-dark);
     opacity: 1;
 }
 
@@ -322,6 +356,9 @@ button:active::after {
     line-height: 1.6;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 
@@ -341,15 +378,38 @@ button:active::after {
 /* ===== FOOTER ===== */
 footer {
     margin-top: 40px;
-    padding: 18px 0;
+    padding: 18px 25px;
     text-align: center;
+    display: flex;
     width: 100%;
+    justify-content: center;
+    align-items: center;
     background: #FDFBF0;
     border-top: 2px solid #9BA48C;
     color: #3F5248;
     font-size: 14px;
     border-radius: 12px 12px 0 0;
     box-shadow: 0 -4px 15px rgba(0,0,0,0.06);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 950px;
+    gap: 15px;
+}
+.footer-tag {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+/* Responsif: Tumpuk konten di layar kecil */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
 /* ===== ADD-ON: FIGMA COMPONENTS (DITAMBAHKAN) ===== */
