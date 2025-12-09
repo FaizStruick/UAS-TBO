@@ -389,27 +389,78 @@ const QuizManager = {
   
   // Fungsi copySoal, deleteSoal, resetSoal, showNotification, setupBackToTop, setupSmoothScroll
   // (Tidak ada perubahan)
+  // Di dalam objek QuizManager:
   copySoal: function(id) {
-    const soal = this.soalList.find(s => s.id === id);
-    if (!soal) return;
-
-    let text = `SOAL QUIZ - ${soal.timestamp}\n\n`;
-    soal.questions.forEach((q, i) => {
-      text += `${i + 1}. ${q.question}\n\n`;
+    // 1. Ambil data set soal berdasarkan ID
+    const soalSet = this.soalList.find(s => s.id === id);
+    if (!soalSet) {
+        // Hentikan jika ID tidak ditemukan (safety check)
+        this.showNotification('Error: Soal tidak ditemukan!', 'error');
+        return; 
+    }
+    // 2. Format teks yang akan disalin
+    // Menggabungkan semua pertanyaan menjadi satu string format
+    let textToCopy = `===== Set Soal: ${soalSet.timestamp} =====\n\n`;
+    soalSet.questions.forEach((q, i) => {
+        textToCopy += `${i + 1}. ${q.question}\n\n`;
     });
+    textToCopy += `(Sumber Materi: ${soalSet.sourceText.substring(0, 50)}...)\n`;
 
-    navigator.clipboard.writeText(text).then(() => {
-      this.showNotification('Soal berhasil disalin!', 'success');
-    }).catch(() => {
-      this.showNotification('Gagal menyalin soal (Mungkin browser tidak mendukung)', 'error');
-    });
-  },
+    // 3. Salin ke Clipboard dan berikan feedback
+    navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+            // Sukses menyalin: Tampilkan notifikasi
+            this.showNotification('Soal berhasil disalin ke clipboard!', 'success');
+            
+            // Panggil fungsi untuk efek visual tombol (langkah 4)
+            this.animateCopyButton(id); 
+
+        })
+        .catch(err => {
+            // Gagal menyalin (misalnya, izin ditolak): Tampilkan notifikasi error
+            console.error('Gagal menyalin:', err);
+            this.showNotification('Gagal menyalin. Coba lagi atau salin manual.', 'error');
+        });
+},
+
+// Di dalam objek QuizManager:
+  animateCopyButton: function(id) {
+    // Dapatkan tombol yang diklik (menggunakan ID dan kelas tombol)
+    const btn = document.querySelector(`.soal-item[data-id="${id}"] .btn-copy`);
+    
+    if (btn) {
+        const originalText = btn.innerHTML; // Simpan teks aslinya
+        
+        // 1. Ubah tampilan tombol menjadi status sukses
+        btn.innerHTML = '✅ Disalin!';
+        btn.classList.add('btn-copied'); // Tambahkan kelas CSS untuk gaya sukses
+        
+        // 2. Set Timer untuk mengembalikan tombol ke keadaan semula
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.classList.remove('btn-copied'); // Hapus kelas CSS
+        }, 1500); // Tahan selama 1.5 detik
+    }
+},
 
   deleteSoal: function(id) {
     if (confirm('Yakin ingin menghapus set soal ini?')) {
+      return;
+    }
+    const itemToDelete = document.querySelector(`.soal-item[data-id="${id}"]`);
+    if(itemToDelete){
+      itemToDelete.classList.add('deleting');
+    
+    setTimeout(() => {
       this.soalList = this.soalList.filter(s => s.id !== id);
-      this.tampilkanSemuaSoal(); 
-      this.showNotification('Soal berhasil dihapus', 'success');
+            this.tampilkanSemuaSoal(); 
+            this.showNotification('Soal berhasil dihapus', 'success');
+        }, 300); 
+    } else {
+        // Fallback jika elemen tidak ditemukan di DOM (lanjutkan penghapusan data)
+        this.soalList = this.soalList.filter(s => s.id !== id);
+        this.tampilkanSemuaSoal(); 
+        this.showNotification('Soal berhasil dihapus', 'success');
     }
   },
 
@@ -438,6 +489,7 @@ const QuizManager = {
     setTimeout(() => {
       notificationBar.style.display = 'none';
     }, 3000);
+    
   },
 
   setupBackToTop: function() {
@@ -482,3 +534,4 @@ document.addEventListener('DOMContentLoaded', function() {
   QuizManager.init(); 
   console.log('✅ Quiz Generator askIFY berhasil diinisialisasi!');
 });
+
