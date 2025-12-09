@@ -11,16 +11,22 @@
 <body>
     
     <header class="hero">
-    <h1>KUIS GENERATOR OTOMATIS</h1>
+        <div class="hero-content">
+    <h1>askIFy</h1>
     <p>Masukkan materi ➜ sistem menghasilkan soal otomatis dengan RAKE + CFG</p>
     <span>Praktis • Cepat • Akurat</span>
+        </div>
+    <div class="hero-image-container">
+        <div class="circle-bg"></div>
+        <img src="buku.png" alt="Notebook" class="hero-image"> 
+    </div>
     </header>
 
     <nav role="navigation" aria-label="Main Navigation">
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#input">Input</a></li>
-            <li><a href="#generate">Isi Materi</a></li>
+            <li><a href="#generate">Generate</a></li>
             <li><a href="#tampilkan-soal">Tampilkan Soal</a></li>
         </ul>
     </nav>
@@ -52,12 +58,16 @@
     <section id="tampilkan-soal" class="tampilkan-soal">
         <h2>Tampilkan semua soal</h2>
 
+        <span class="logo-coroner">askIFy</span>
+
+        <div id="soal-list" class="soal-list"></div>
+
+    
         <div class="btn-group">
-        <button id="tampilkan-soal-btn">Tampilkan Semua Soal</button>
+        <button id="tampilkan-soal-btn" class="secondary">Tampilkan Semua Soal</button>
         <button id="reset-btn" class="danger">Clear</button>
         </div>
         
-        <div id="soal-list" class="soal-list"></div>
     </section>
     
 

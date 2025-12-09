@@ -14,7 +14,7 @@ html {
 
 body {
     font-family: "Poppins", sans-serif;
-    background-color: #F5F2D8; /* soft cream */
+    background-color: #667F62; /* soft cream */
     color: #2F3E33;
     padding: 20px 15px;
     display: flex;
@@ -25,43 +25,45 @@ body {
 /* ===== HERO HEADER ===== */
 .hero {
     width: 100%;
-    max-width: 950px;
-    background: linear-gradient(
-        135deg,
-        #FDFBF0 0%,
-        #F5F2D8 50%,
-        #E5E1C2 100%
-    );
-    padding: 60px 35px;
+    max-width: 1100px;
+    background: #46594C;
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 35px;
     border-radius: 20px;
-    text-align: center;
-    margin-bottom: 35px;
-    border: 2px solid #9BA48C;
-    box-shadow: 0 12px 25px rgba(0,0,0,0.07);
-    animation: fadeDown 0.8s ease;
+    text-align: left;
+    overflow: hidden;
+}
+.hero .hero-content {
+    max-width: 45%;
+    text-align: left;
+    margin-right: 20px;
+    z-index: 3;
 }
 
 /* HERO Title */
 .hero h1 {
     font-size: 52px;
     font-weight: 800;
-    color: #2F3E33;
+    color: #FDFBF0;
     margin-bottom: 12px;
     letter-spacing: 1px;
+    text-align: left;
 }
 
 /* Subtitle */
 .hero p {
     font-size: 18px;
     font-weight: 400;
-    color: #3F5248;
+    color: #FDFBF0;
     margin-bottom: 10px;
+    text-align: left;
 }
 
 /* Small tagline */
 .hero span {
     font-size: 14px;
-    color: #6D8162;
+    color: #E5E1C2;
     font-style: italic;
 }
 
@@ -84,6 +86,35 @@ h1 {
 @keyframes floatUp {
     from { opacity: 0; transform: translateY(40px); }
     to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Styling Gambar Buku (Sudah ada di kode Anda, ini untuk memastikan) ===== */
+.hero-image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* Geser ke kanan untuk tampilan yang lebih baik jika perlu */
+    transform: translateX(-7px); 
+    flex-shrink: 0;
+}
+
+.hero-image {
+    width: 330px;
+    transform: rotate(-8deg);
+    filter: drop-shadow(0 18px 30px rgba(0,0,0,0.18));
+    position: relative;
+    z-index: 2; /* Di atas lingkaran */
+}
+
+.circle-bg {
+    width: 380px;
+    height: 380px;
+    background: #E9E7D3;
+    border-radius: 50%;
+    position: absolute;
+    top: -25px;
+    z-index: 1; /* Di bawah gambar buku */
+    filter: blur(1px);
 }
 
 /* ===== NAVBAR ===== */
@@ -230,19 +261,22 @@ button:active::after {
 
 .danger:hover {
     background-color: #9BA48C;
-    opacity: 0.85s;
+    opacity: 1;
 }
 
 
 /* ===== BUTTON GROUP (Tampilkan & Hapus Soal) ===== */
 .btn-group {
+    margin-top: 20px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
     gap: 15px;
     margin-bottom: 15px;
 }
 
 .btn-group button {
+    padding: 12px 20px;
+    border-radius: 20px;
     flex: 1; /* bikin tombol ukuran seimbang */
 }
 
@@ -260,6 +294,7 @@ button:active::after {
 @media (max-width: 600px) {
     .btn-group {
         flex-direction: column;
+        justify-content: center;
     }
 
     .btn-group button {
@@ -278,7 +313,6 @@ button:active::after {
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     min-height: 80px;
 }
-
 
 
 .loading {
