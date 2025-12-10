@@ -356,7 +356,7 @@ const QuizManager = {
     if (materiInput && generateBtn) {
       materiInput.addEventListener('input', function() {
         const text = this.value.trim();
-        generateBtn.disabled = text.length < 50; 
+        generateBtn.disabled = text.length < 10; 
       });
       // Menggunakan arrow function untuk mempertahankan 'this' sebagai QuizManager
       generateBtn.addEventListener('click', () => this.generateSoal()); 
@@ -394,7 +394,7 @@ const QuizManager = {
       try {
         const keywords = RAKEModule.extractKeywords(inputText, 15);
         
-        if (keywords.length < 3) {
+        if (keywords.length < 1) {
           throw new Error('Tidak dapat mengekstrak kata kunci yang cukup (minimal 3) dari materi Anda. Coba masukkan teks yang lebih panjang atau lebih formal.'); 
         }
 
