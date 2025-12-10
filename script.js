@@ -540,10 +540,11 @@ const QuizManager = {
 },
 
   deleteSoal: function(id) {
-    if (confirm('Yakin ingin menghapus set soal ini?')) {
+    if (!confirm('Yakin ingin menghapus set soal ini?')) {
       return;
     }
     const itemToDelete = document.querySelector(`.soal-item[data-id="${id}"]`);
+    
     if(itemToDelete){
       itemToDelete.classList.add('deleting');
     
