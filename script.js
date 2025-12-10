@@ -200,6 +200,7 @@ const RAKEModule = {
     });
 
     return phraseScores
+      .filter(item => item.phrase.split(' ').length <= 3)
       .sort((a, b) => b.score - a.score)
       .slice(0, maxKeywords)
       .map(item => item.phrase);
@@ -247,7 +248,7 @@ const CFGModule = {
     ]
   },
 
-  generateQuestions: function(keywords, questionCount = 5) {
+  generateQuestions: function(keywords, questionCount = 20) {
     const questions = [];
     const ruleTypes = Object.keys(this.grammarRules).filter(type => type !== 'comparison');
     
@@ -483,9 +484,7 @@ const QuizManager = {
     this.showSection('tampilkan-soal'); // Pindah ke section tampilkan-soal
   },
   
-  // Fungsi copySoal, deleteSoal, resetSoal, showNotification, setupBackToTop, setupSmoothScroll
-  // (Tidak ada perubahan)
-  // Di dalam objek QuizManager:
+ 
   copySoal: function(id) {
     // 1. Ambil data set soal berdasarkan ID
     const soalSet = this.soalList.find(s => s.id === id);
@@ -494,8 +493,7 @@ const QuizManager = {
         this.showNotification('Error: Soal tidak ditemukan!', 'error');
         return; 
     }
-    // 2. Format teks yang akan disalin
-    // Menggabungkan semua pertanyaan menjadi satu string format
+  
     let textToCopy = `===== Set Soal: ${soalSet.timestamp} =====\n\n`;
     soalSet.questions.forEach((q, i) => {
         textToCopy += `${i + 1}. ${q.question}\n\n`;
