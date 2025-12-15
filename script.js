@@ -356,7 +356,7 @@ const QuizManager = {
     if (materiInput && generateBtn) {
       materiInput.addEventListener('input', function() {
         const text = this.value.trim();
-        generateBtn.disabled = text.length < 10; 
+        generateBtn.disabled = text.length < 3; 
       });
       // Menggunakan arrow function untuk mempertahankan 'this' sebagai QuizManager
       generateBtn.addEventListener('click', () => this.generateSoal()); 
@@ -381,7 +381,7 @@ const QuizManager = {
     
     const inputText = materiInput.value.trim();
 
-    if (inputText.length < 50) {
+    if (inputText.length < 3) {
       this.showNotification('Mohon masukkan materi minimal 50 karakter!', 'error');
       return;
     }
@@ -398,7 +398,7 @@ const QuizManager = {
           throw new Error('Tidak dapat mengekstrak kata kunci yang cukup (minimal 3) dari materi Anda. Coba masukkan teks yang lebih panjang atau lebih formal.'); 
         }
 
-        const jumlahSoal = Math.min(5, keywords.length);
+        const jumlahSoal = Math.min(1, keywords.length);
         const questions = CFGModule.generateQuestions(keywords, jumlahSoal);
 
         let output = `=== SOAL HASIL GENERATE askIFY ===\n`;
