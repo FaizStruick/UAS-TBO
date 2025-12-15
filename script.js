@@ -214,48 +214,63 @@ const RAKEModule = {
 const CFGModule = {
   grammarRules: {
     definition: [
-      'Apa yang dimaksud dengan {keyword}?', 'Jelaskan pengertian dari {keyword}!',
-      'Definisikan istilah {keyword}!', 'Apa definisi dari {keyword}?',
-      'Jelaskan apa itu {keyword}!'
+      'Apa yang dimaksud dengan {keyword}?',
+      'Jelaskan secara singkat pengertian {keyword}!', 
+      'Uraikan pemahaman Anda mengenai {keyword}!', 
+      'Definisikan apa itu {keyword}!',
+      'Jelaskan konsep dasar di balik {keyword}!' 
     ],
     purpose: [
-      'Apa fungsi dari {keyword}?', 'Apa tujuan dari {keyword}?',
-      'Untuk apa {keyword} digunakan?', 'Sebutkan kegunaan dari {keyword}!',
-      'Mengapa {keyword} penting?'
+      'Apa fungsi utama dari {keyword}?',
+      'Mengapa {keyword} diperlukan dalam konteks ini?', 
+      'Jelaskan tujuan dilakukannya {keyword}!', 
+      'Sebutkan kegunaan atau peran dari {keyword}!',
+      'Apa urgensi atau pentingnya {keyword}?' 
     ],
     process: [
-      'Bagaimana cara kerja {keyword}?', 'Jelaskan proses {keyword}!',
-      'Bagaimana {keyword} bekerja?', 'Uraikan tahapan dalam {keyword}!',
-      'Jelaskan mekanisme {keyword}!'
+      'Bagaimana mekanisme kerja {keyword}?',
+      'Uraikan langkah-langkah atau tahapan {keyword}!', 
+      'Jelaskan bagaimana proses {keyword} berlangsung!',
+      'Gambarkan secara umum alur dari {keyword}!',
+      'Bagaimana {keyword} dapat terjadi?'
     ],
     example: [
-      'Berikan contoh dari {keyword}!', 'Sebutkan contoh penerapan {keyword}!',
-      'Apa saja contoh {keyword}?', 'Tuliskan contoh implementasi {keyword}!',
-      'Ilustrasikan {keyword} dengan contoh!'
+      'Berikan contoh konkret dari {keyword}!',
+      'Sebutkan studi kasus atau penerapan {keyword}!',
+      'Dalam situasi apa {keyword} biasanya ditemukan?', 
+      'Tuliskan contoh nyata implementasi {keyword}!',
+      'Berikan ilustrasi sederhana mengenai {keyword}!'
     ],
     comparison: [
-      'Apa perbedaan antara {keyword1} dan {keyword2}?', 'Bandingkan {keyword1} dengan {keyword2}!',
-      'Jelaskan persamaan dan perbedaan {keyword1} dan {keyword2}!', 'Apa yang membedakan {keyword1} dari {keyword2}?'
+      'Apa perbedaan mendasar antara {keyword1} dan {keyword2}?',
+      'Bandingkan karakteristik {keyword1} dengan {keyword2}!',
+      'Analisis persamaan dan perbedaan antara {keyword1} dan {keyword2}!',
+      'Bagaimana kaitan atau hubungan antara {keyword1} dan {keyword2}?' 
     ],
     advantages: [
-      'Apa kelebihan dari {keyword}?', 'Sebutkan keuntungan menggunakan {keyword}!',
-      'Apa manfaat dari {keyword}?', 'Jelaskan kelebihan dan kekurangan {keyword}!',
-      'Apa keunggulan {keyword}?'
+      'Apa nilai tambah atau kelebihan dari {keyword}?',
+      'Sebutkan dampak positif dari {keyword}!', 
+      'Apa manfaat utama yang diperoleh dari {keyword}?',
+      'Jelaskan sisi positif dan negatif dari {keyword}!',
+      'Mengapa {keyword} dianggap menguntungkan?'
     ],
     characteristic: [
-      'Sebutkan ciri-ciri {keyword}!', 'Apa karakteristik dari {keyword}?',
-      'Jelaskan sifat-sifat {keyword}!', 'Apa yang menjadi ciri khas {keyword}?'
+      'Sebutkan ciri-ciri utama {keyword}!',
+      'Apa karakteristik yang membedakan {keyword}?',
+      'Identifikasi elemen-elemen kunci dalam {keyword}!', 
+      'Bagaimana sifat atau karakteristik dari {keyword}?'
     ]
   },
 
-  generateQuestions: function(keywords, questionCount = 20) {
+  generateQuestions: function(keywords, questionCount){
+    if (questionCount === undefined) questionCount = 20;
     const questions = [];
     const ruleTypes = Object.keys(this.grammarRules).filter(type => type !== 'comparison');
     
-    for (let i = 0; i < questionCount && i < keywords.length; i++) {
-      const keyword = keywords[i];
+    for (let i = 0; i < questionCount; i++) {
+      const keyword = keywords[i % keywords.length];
       
-      if (i > 0 && keywords.length > 1 && Math.random() > 0.7) {
+      if (i > 0 && keywords.length > 1 && Math.random() > 0.8) {
         const availableKeywords = keywords.filter(k => k !== keyword);
         if (availableKeywords.length > 0) {
             const keyword2 = availableKeywords[Math.floor(Math.random() * availableKeywords.length)];
@@ -374,11 +389,17 @@ const QuizManager = {
   },
 
   generateSoal: function() {
-    // ... (Logika RAKE dan CFG di sini tidak berubah) ...
     const materiInput = document.getElementById('materi-input');
     const soalOutput = document.getElementById('soal-output');
     const loadingIndicator = document.getElementById('loading-indicator');
     
+    // 1. AMBIL NILAI JUMLAH SOAL DARI INPUT BARU
+    const jumlahInput = document.getElementById('jumlah-soal');
+    // Pastikan nilainya angka, minimal 1, maksimal 20. Default ke 5 jika error.
+    let requestedCount = parseInt(jumlahInput.value) || 5;
+    if (requestedCount < 1) requestedCount = 1;
+    if (requestedCount > 20) requestedCount = 20;
+
     const inputText = materiInput.value.trim();
 
     if (inputText.length < 3) {
@@ -395,15 +416,16 @@ const QuizManager = {
         const keywords = RAKEModule.extractKeywords(inputText, 15);
         
         if (keywords.length < 1) {
-          throw new Error('Tidak dapat mengekstrak kata kunci yang cukup (minimal 3) dari materi Anda. Coba masukkan teks yang lebih panjang atau lebih formal.'); 
+          throw new Error('Tidak dapat mengekstrak kata kunci. Materi terlalu pendek.'); 
         }
 
-        const jumlahSoal = Math.min(1, keywords.length);
-        const questions = CFGModule.generateQuestions(keywords, jumlahSoal);
+        // 2. GUNAKAN VARIABLE requestedCount DI SINI
+        // Tidak perlu lagi Math.min(1, keywords.length) karena kita sudah memperbaiki logika looping CFG sebelumnya
+        const questions = CFGModule.generateQuestions(keywords, requestedCount);
 
         let output = `=== SOAL HASIL GENERATE askIFY ===\n`;
         output += `Tanggal: ${new Date().toLocaleDateString('id-ID')}\n`;
-        output += `Jumlah Soal: ${questions.length}\n`;
+        output += `Jumlah Soal: ${questions.length}\n`; // Menampilkan jumlah real yang berhasil dibuat
         output += `Kata Kunci Teratas: ${keywords.slice(0, 5).join(', ')}\n\n`;
         
         questions.forEach((q, index) => {
@@ -426,7 +448,6 @@ const QuizManager = {
         
         this.showNotification(`Berhasil generate ${questions.length} soal!`, 'success');
 
-        // Setelah generate, tampilkan section 'generate'
         this.showSection('generate');
 
       } catch (error) {
@@ -435,7 +456,7 @@ const QuizManager = {
         this.showNotification('Terjadi kesalahan: ' + error.message, 'error');
       }
     }, 1000); 
-  },
+},
 
   tampilkanSemuaSoal: function() {
     // ... (Logika tampilkan semua soal tidak berubah) ...
