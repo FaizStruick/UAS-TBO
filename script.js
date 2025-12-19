@@ -1,12 +1,3 @@
-// ============================================
-// QUIZ GENERATOR - JAVASCRIPT IMPLEMENTATION
-// Menggunakan RAKE & CFG Algorithm
-// ============================================
-
-// ============================================
-// 1. RAKE MODULE (Rapid Automatic Keyword Extraction)
-// (Tidak Ada Perubahan Logika)
-// ============================================
 const RAKEModule = {
   // Stopwords Bahasa Indonesia
   stopwords: [
@@ -207,10 +198,6 @@ const RAKEModule = {
   }
 };
 
-// ============================================
-// 2. CFG MODULE (Context-Free Grammar)
-// (Tidak Ada Perubahan Logika)
-// ============================================
 const CFGModule = {
   grammarRules: {
     definition: [
@@ -627,20 +614,13 @@ const QuizManager = {
   },
 
   setupSmoothScroll: function() {
-    // Note: Karena navigasi kini ditangani oleh showSection, bagian ini
-    // hanya digunakan untuk scroll eksternal/internal jika ada.
+   
     document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
-        // e.preventDefault(); // Tidak perlu preventDefault jika showSection sudah menangani
-        // ...
       });
     });
   }
 };
-
-// ============================================
-// 4. INITIALIZE SAAT PAGE LOAD
-// ============================================
 
 window.QuizManager = QuizManager;
 window.RAKEModule = RAKEModule;
